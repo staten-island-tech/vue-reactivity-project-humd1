@@ -1,5 +1,6 @@
 <script setup>
 import {ref} from 'vue'
+import ListCard from '@/components/ListCard.vue';
 const lists = ref([
   { name: "Placeholder", tasks: ["Placeholder Task 1", "Placeholder Task 2"] },
 ])
@@ -13,8 +14,10 @@ const lists = ref([
   <hr class="border-gray-400 border-1 border-dotted w-300 my-4">
   </div>
 
+  
+  <h2 class = "your lists text-5xl font-gummy text-sky-200 tracking-wide text-center">Your Lists:</h2>
   <div class = "listcontainer flex justify-center mt-10">
-  <h2 class = "your lists text-5xl font-gummy text-sky-200 tracking-wide">Your Lists</h2>
+  <ListCard v-for= "list in lists" :key="list.name" :list="list">{{list.name}}</ListCard> 
   </div>
 </template>
 
