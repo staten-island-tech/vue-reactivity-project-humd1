@@ -1,1 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 @import "tailwindcss";
+
+.font-gochi {
+  font-family: 'Gochi Hand', cursive;
+}
+
+.font-gummy {
+    font-family: "Sour Gummy", cursive;
+}
+
+.font-fancy{
+    font-family: "Sacramento", cursive;
+}

@@ -1,11 +1,21 @@
-<script setup></script>
+<script setup>
+import {ref} from 'vue'
+const lists = ref([
+  { name: "Placeholder", tasks: ["Placeholder Task 1", "Placeholder Task 2"] },
+])
+</script>
+
 
 <template>
-  <h1 class = "text-6xl font-bold text-blue-500">You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div class = "headings flex flex-col gap-2 mt-8 text-center items-center">
+  <h1 class = "text-6xl font-gummy text-black text-shadow-md tracking-widest">To Do!</h1>
+  <h2 class = "text-4xl font-fancy text-sky-200 tracking-wide">do yo work</h2>
+  <hr class="border-gray-400 border-1 border-dotted w-300 my-4">
+  </div>
+
+  <div class = "listcontainer flex justify-center mt-10">
+  <h2 class = "your lists text-5xl font-gummy text-sky-200 tracking-wide">Your Lists</h2>
+  </div>
 </template>
 
 <style scoped></style>
