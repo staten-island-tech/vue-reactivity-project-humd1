@@ -22,7 +22,7 @@ function addNewTask(){
   newTasks.value.push("");
 }
 function createNewList(){
-  const tasks = newTasks.value.filter(task => task.trim() !== "");
+  const tasks = newTasks.value;
   lists.value.push({ name: listName.value, tasks: tasks });
   closeModal();
 }
@@ -47,7 +47,7 @@ function createNewList(){
         <div class="bg-sky-50 p-8 rounded-lg shadow-xl w-auto h-auto border-2 border-slate-300">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-5xl text-sky-200 font-fancy font-semibold">Create New List</h2>
-                <button @click="closeModal()" id="close-modal-btn" class="text-gray-500 text-5xl hover:text-gray-700">
+                <button @click="closeModal()" class="text-gray-500 text-5xl hover:text-gray-700">
                     &times;
                 </button>
             </div>
@@ -59,6 +59,14 @@ function createNewList(){
                 <button class="bg-emerald-200 font-gummy hover:bg-emerald-300 text-white text-2xl font-bold py-1 px-4 rounded" @click="createNewList()">Create List</button>
             </div>
         </div>
+    </div>
+
+    <div id="viewlist" class = "fixed inset-0 bg-black/75 flex items-center justify-center hidden">
+      <div class="bg-sky-50 p-8 rounded-lg shadow-xl w-auto h-auto border-2 border-slate-300">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-5xl text-sky-200 font-fancy font-semibold">Your List</h2>
+            </div>
+      </div>
     </div>
 </template>
 
