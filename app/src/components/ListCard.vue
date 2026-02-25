@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-const emit = defineEmits(['viewlist', "list"])
+const emit = defineEmits(['viewlist'])
 
 defineProps({
     list:{
