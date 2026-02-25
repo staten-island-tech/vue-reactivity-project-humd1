@@ -11,13 +11,14 @@ const listName = ref("");
 const listId = ref(2);
 
 function openModal() {
-  const modal = document.getElementById('modal');
+  const modal = document.getElementById('newlistmodal');
   modal.classList.remove('hidden');
   listName.value = "";
   newTasks.value = [""];   
 }
+
 function closeModal(){
-  const modal = document.getElementById('modal');
+  const modal = document.getElementById('newlistmodal');
   modal.classList.add('hidden');
 }
 function addNewTask(){
@@ -45,7 +46,7 @@ function createNewList(){
   <div class = "listcontainer flex justify-center gap-4 mt-10">
   <ListCard v-for= "list in lists" :key="list.name" :list="list">{{list.name}}</ListCard> 
   </div>
-      <div id="modal" class="fixed inset-0 bg-black/75 flex items-center justify-center hidden">
+      <div id="newlistmodal" class="fixed inset-0 bg-black/75 flex items-center justify-center hidden">
         <div class="bg-sky-50 p-8 rounded-lg shadow-xl w-auto h-auto border-2 border-slate-300">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-5xl text-sky-200 font-fancy font-semibold">Create New List</h2>
