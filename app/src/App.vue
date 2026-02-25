@@ -38,9 +38,8 @@ function view(list){
   viewModal.classList.remove('hidden');
 }
 
-
-function deleteList(DeletedList){
-  lists.value = lists.value.filter(list => list.id !== DeletedList.id);
+function deleteList(deletedList){
+  lists.value = lists.value.filter(list => list.id !== deletedList.id);
 };
 
 console.log(selectedList);
