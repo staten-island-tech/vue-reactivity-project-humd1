@@ -19,8 +19,8 @@ function openModal() {
   newTasks.value = [""];   
 }
 
-function closeModal(){
-  const modal = document.getElementById('NewListModal');
+function closeModal(id){
+  const modal = document.getElementById(id);
   modal.classList.add('hidden');
 }
 function addNewTask(){
@@ -30,7 +30,7 @@ function createNewList(){
   const tasks = newTasks.value;
   lists.value.push({ name: listName.value, tasks: tasks, id: listId.value });
   listId.value++;
-  closeModal();
+  closeModal('NewListModal');
 }
 
 function view(list){
@@ -57,10 +57,10 @@ function view(list){
   <ListCard v-for= "list in lists" :key="list.name" :list="list" @viewlist="view">{{list.name}}</ListCard> 
   </div>
       <div id="NewListModal" class="fixed inset-0 bg-black/75 flex items-center justify-center hidden">
-        <div class="bg-sky-50 p-8 rounded-lg shadow-xl w-auto h-auto border-2 border-slate-300">
+        <div class="bg-sky-50 p-8 rounded-lg shadow-xl w-auto h-150 border-2 border-slate-300 overflow-auto">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-5xl text-sky-200 font-fancy font-semibold">Create New List</h2>
-                <button @click="closeModal()" class="text-gray-500 text-5xl hover:text-gray-700">
+                <button @click="closeModal('NewListModal')" class="text-gray-500 text-5xl hover:text-gray-700">
                     &times;
                 </button>
             </div>
@@ -77,7 +77,10 @@ function view(list){
     <div id="viewTheList" class = "fixed inset-0 bg-black/75 flex items-center justify-center hidden">
       <div class="bg-sky-50 p-8 rounded-lg shadow-xl w-auto h-auto border-2 border-slate-300">
             <div class="flex justify-between items-center mb-4">
-                <h2 class="text-5xl text-sky-200 font-fancy font-semibold">{{selectedList.name}}</h2>
+                <h2 class="text-5xl text-sky-200 font-fancy font-semibold">TITLE</h2>
+                <button @click="closeModal('viewTheList')" class="text-gray-500 text-5xl hover:text-gray-700">
+                    &times;
+                </button>
             </div>
       </div>
     </div>
