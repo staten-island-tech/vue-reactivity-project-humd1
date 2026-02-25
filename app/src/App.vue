@@ -1,12 +1,14 @@
 <script setup>
 import {ref} from 'vue'
 import ListCard from '@/components/ListCard.vue';
+import { list } from 'postcss';
 const lists = ref([
-  { name: "Your First List", tasks: ["Press the Plus Button", "Create a New List"] },
+  { name: "Your First List", tasks: ["Press the Plus Button", "Create a New List"], id: 1},
 ])
 
 const newTasks = ref([""]);
 const listName = ref("");
+const listId = ref(2);
 
 function openModal() {
   const modal = document.getElementById('modal');
