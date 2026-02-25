@@ -9,16 +9,18 @@ const lists = ref([
 const newTasks = ref([""]);
 const listName = ref("");
 const listId = ref(2);
+const selectedList = ref(null)
+
 
 function openModal() {
-  const modal = document.getElementById('newlistmodal');
+  const modal = document.getElementById('NewListModal');
   modal.classList.remove('hidden');
   listName.value = "";
   newTasks.value = [""];   
 }
 
 function closeModal(){
-  const modal = document.getElementById('newlistmodal');
+  const modal = document.getElementById('NewListModal');
   modal.classList.add('hidden');
 }
 function addNewTask(){
@@ -26,9 +28,17 @@ function addNewTask(){
 }
 function createNewList(){
   const tasks = newTasks.value;
-  lists.value.push({ name: listName.value, tasks: tasks });
+  lists.value.push({ name: listName.value, tasks: tasks, id: listId.value });
+  listId.value++;
   closeModal();
 }
+
+function view(list){
+  selectedList.value = list;
+  const viewModal = document.getElementById('viewTheList');
+  viewModal.classList.remove('hidden');
+}
+
 </script>
 
 
@@ -44,9 +54,9 @@ function createNewList(){
   <button class="bg-emerald-200 hover:bg-emerald-300 text-white text-2xl font-bold py-1 px-4 rounded" @click="openModal()">+</button>
   </div>
   <div class = "listcontainer flex justify-center gap-4 mt-10">
-  <ListCard v-for= "list in lists" :key="list.name" :list="list">{{list.name}}</ListCard> 
+  <ListCard v-for= "list in lists" :key="list.name" :list="list" @viewlist="view">{{list.name}}</ListCard> 
   </div>
-      <div id="newlistmodal" class="fixed inset-0 bg-black/75 flex items-center justify-center hidden">
+      <div id="NewListModal" class="fixed inset-0 bg-black/75 flex items-center justify-center hidden">
         <div class="bg-sky-50 p-8 rounded-lg shadow-xl w-auto h-auto border-2 border-slate-300">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-5xl text-sky-200 font-fancy font-semibold">Create New List</h2>
@@ -64,10 +74,10 @@ function createNewList(){
         </div>
     </div>
 
-    <div id="viewlist" class = "fixed inset-0 bg-black/75 flex items-center justify-center hidden">
+    <div id="viewTheList" class = "fixed inset-0 bg-black/75 flex items-center justify-center hidden">
       <div class="bg-sky-50 p-8 rounded-lg shadow-xl w-auto h-auto border-2 border-slate-300">
             <div class="flex justify-between items-center mb-4">
-                <h2 class="text-5xl text-sky-200 font-fancy font-semibold">Your List</h2>
+                <h2 class="text-5xl text-sky-200 font-fancy font-semibold">{{selectedList.name}}</h2>
             </div>
       </div>
     </div>

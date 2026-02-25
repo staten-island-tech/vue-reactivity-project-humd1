@@ -13,6 +13,8 @@
 </template>
 
 <script setup>
+const emit = defineEmits(['viewlist', "list"])
+
 defineProps({
     list:{
         type: Object,
