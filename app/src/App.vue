@@ -92,4 +92,5 @@ function view(list){
     </div>
 </template>
 
+
 <style scoped></style>
