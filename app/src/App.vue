@@ -1,7 +1,6 @@
 <script setup>
 import {ref} from 'vue'
 import ListCard from '@/components/ListCard.vue';
-import { list } from 'postcss';
 const lists = ref([
   { name: "Your First List", tasks: ["Press the Plus Button", "Create a New List"], id: 1},
 ])
@@ -39,6 +38,7 @@ function view(list){
   viewModal.classList.remove('hidden');
 }
 
+console.log(selectedList);
 </script>
 
 
@@ -73,17 +73,39 @@ function view(list){
             </div>
         </div>
     </div>
-
+    
     <div id="viewTheList" class = "fixed inset-0 bg-black/75 flex items-center justify-center hidden">
-      <div class="bg-sky-50 p-8 rounded-lg shadow-xl w-auto h-auto border-2 border-slate-300">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-5xl text-sky-200 font-fancy font-semibold">TITLE</h2>
-                <button @click="closeModal('viewTheList')" class="text-gray-500 text-5xl hover:text-gray-700">
+      <div class="bg-sky-50 p-8 rounded-lg shadow-xl w-200 h-150 border-2 border-slate-300">
+             <div class="flex justify-between items-center mb-4">
+                <h2 class="text-5xl text-sky-200 font-fancy font-semibold">{{selectedList.name}}</h2>
+                  <button @click="closeModal('viewTheList')" class="text-gray-500 text-5xl hover:text-gray-700">
                     &times;
                 </button>
             </div>
+            <div class="flex flex-col gap-5">
+                  <ul class="list-disc text-2xl list-inside text-center leading-loose items-left">
+                    <li v-for="task in selectedList.tasks" :key="task">{{ task }}<button class="ml-6 mb-2 bg-rose-200 hover:bg-rose-300 text-white text-sm font-bold py-1 px-2 rounded">Delete</button></li>
+                  </ul>
+            </div>
       </div>
     </div>
+     
+    <!-- <div id="viewTheList" class = "fixed inset-0 bg-black/75 flex items-center justify-center hidden">
+      <div class="bg-sky-50 p-8 rounded-lg shadow-xl w-200 h-150 border-2 border-slate-300">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-5xl text-sky-200 font-fancy font-semibold">{{selectedList.name}}</h2>
+                  <button @click="closeModal('viewTheList')" class="text-gray-500 text-5xl hover:text-gray-700">
+                    &times;
+                </button>
+            </div>
+            <div class="flex flex-col gap-5">
+                <h3 class="text-2xl font-gummy text-sky-200 tracking-wide"></h3>
+                  <ul class="list-disc list-inside text-center leading-loose ">
+                    <li v-for="task in selectedList.tasks" :key="task">{{ task }}<button class="ml-2 bg-rose-200 hover:bg-rose-300 text-white text-sm font-bold py-1 px-2 rounded">Delete</button></li>
+                  </ul>
+            </div>
+      </div>
+    </div> -->
 </template>
 
 <style scoped></style>
