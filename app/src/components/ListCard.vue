@@ -7,13 +7,13 @@
         </ul>
         <div class="buttons flex flex-col gap-4">
         <button class="bg-sky-200 hover:bg-sky-300 text-white font-bold py-2 px-4 rounded" @click="$emit('viewlist', list)">View</button>
-        <button class="bg-rose-200 hover:bg-rose-300 text-white font-bold py-2 px-4 rounded">Delete</button>
+        <button class="bg-rose-200 hover:bg-rose-300 text-white font-bold py-2 px-4 rounded" @click="emit('deletelist', list)">Delete</button>
         </div>
     </div>
 </template>
 
 <script setup>
-const emit = defineEmits(['viewlist'])
+const emit = defineEmits(['viewlist', 'deletelist'])
 
 defineProps({
     list:{

@@ -38,6 +38,11 @@ function view(list){
   viewModal.classList.remove('hidden');
 }
 
+
+function deleteList(DeletedList){
+  lists.value = lists.value.filter(list => list.id !== DeletedList.id);
+};
+
 console.log(selectedList);
 </script>
 
@@ -54,7 +59,7 @@ console.log(selectedList);
   <button class="bg-emerald-200 hover:bg-emerald-300 text-white text-2xl font-bold py-1 px-4 rounded" @click="openModal()">+</button>
   </div>
   <div class = "listcontainer flex justify-center gap-4 mt-10">
-  <ListCard v-for= "list in lists" :key="list.name" :list="list" @viewlist="view">{{list.name}}</ListCard> 
+  <ListCard v-for= "list in lists" :key="list.name" :list="list" @viewlist="view" @deletelist="deleteList">{{list.name}}</ListCard> 
   </div>
       <div id="NewListModal" class="fixed inset-0 bg-black/75 flex items-center justify-center hidden">
         <div class="bg-sky-50 p-8 rounded-lg shadow-xl w-auto h-150 border-2 border-slate-300 overflow-auto">
