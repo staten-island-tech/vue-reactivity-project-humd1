@@ -2,7 +2,7 @@
 import {ref} from 'vue'
 import ListCard from '@/components/ListCard.vue';
 const lists = ref([
-  { name: "Your First List", tasks: ["Press the Plus Button", "Create a New List"], id: 1},
+  { name: "Your First List", tasks: ["Press the Plus Button", "Create a New List", "Click the View Button", "Check Off Your Completed Tasks"], id: 1},
 ])
 
 const newTasks = ref([""]);
@@ -51,17 +51,22 @@ console.log(selectedList);
 
 
 <template>
-  <div class = "headings flex flex-col gap-2 mt-8 text-center items-center">
+  <div class="app bg-gradient-to-b from-white to-sky-50/30 min-h-screen">
+  <div class = "headings flex flex-col gap-2 mt-10 text-center items-center">
   <h1 class = "text-6xl font-gummy text-black text-shadow-md tracking-widest">To Do!</h1>
-  <h2 class = "text-4xl font-fancy text-sky-200 tracking-wide">pls do yo work</h2>
+  <h2 class = "text-5xl font-fancy text-sky-200 tracking-wide">pls do yo work</h2>
+  <h2 class = "text-2xl font-fancy text-sky-200 tracking-wide">(especially pd 6)</h2>
   <hr class="border-gray-400 border-1 border-dotted w-300 my-4">
   </div>
 
   <div class = "mt-5 menu2 flex justify-center gap-7">
   <h2 class = "your lists text-5xl font-gummy text-sky-200 tracking-wide text-center">Your Lists</h2>
-  <button class="bg-emerald-200 hover:bg-emerald-300 text-white text-2xl font-bold py-1 px-4 rounded" @click="openModal()">+</button>
   </div>
-  <div class = "listcontainer flex justify-center gap-4 mt-10">
+  <div class = "mt-5 menu2 flex justify-center gap-7">
+  <button class="bg-emerald-200 hover:bg-emerald-300 text-white text-2xl font-bold py-1 px-4 rounded" @click="openModal()">+</button>
+  <button class="bg-rose-200 hover:bg-rose-300 text-white text-1xl font-bold py-1 px-4 rounded" @click="lists = []">Delete All</button>
+  </div>
+  <div class = "listcontainer flex flex-wrap transition justify-center gap-4 mt-10">
   <ListCard v-for= "list in lists" :key="list.name" :list="list" @viewlist="view" @deletelist="deleteList">{{list.name}}</ListCard> 
   </div>
       <div id="NewListModal" class="fixed inset-0 bg-black/75 flex items-center justify-center hidden">
@@ -83,20 +88,21 @@ console.log(selectedList);
     </div>
     
     <div id="viewTheList" class = "fixed inset-0 bg-black/75 flex items-center justify-center hidden">
-      <div class="bg-gray-100 p-8 rounded-lg shadow-xl w-200 h-150 border-2 border-slate-300">
+      <div class="bg-gray-100 p-8 rounded-lg shadow-xl w-200 h-150 border-2 border-slate-300 overflow-auto">
              <div class="flex justify-between items-center mb-4">
                 <h2 class="text-5xl text-sky-300 font-fancy ">{{selectedList?.name}}</h2>
                   <button @click="closeModal('viewTheList')" class="text-gray-500 text-5xl hover:text-gray-700">
                     &times;
                 </button>
             </div>
-            <div class="mt-10 flex flex-col gap-5">
+            <div class="mt-10 font-gummy text-xl flex flex-col gap-5">
                     <div v-for="task in selectedList?.tasks" :key="task" class="flex items-center gap-2">
                       <button class="ml-6 mb-2 bg-sky-200 hover:bg-gray-300 text-white text-sm font-bold py-1 px-2 " @click="taskDone(task)">✓</button>
                       {{ task }}
                     </div>
             </div>
       </div>
+    </div>
     </div>
      
     <!-- <div id="viewTheList" class = "fixed inset-0 bg-black/75 flex items-center justify-center hidden">
