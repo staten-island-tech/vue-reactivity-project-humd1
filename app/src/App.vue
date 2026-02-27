@@ -65,9 +65,9 @@ console.log(selectedList);
   <ListCard v-for= "list in lists" :key="list.name" :list="list" @viewlist="view" @deletelist="deleteList">{{list.name}}</ListCard> 
   </div>
       <div id="NewListModal" class="fixed inset-0 bg-black/75 flex items-center justify-center hidden">
-        <div class="bg-sky-50 p-8 rounded-lg shadow-xl w-auto h-150 border-2 border-slate-300 overflow-auto">
+        <div class="bg-gray-100 p-8 rounded-lg shadow-xl w-auto h-150 border-2 border-slate-300 overflow-auto">
             <div class="flex justify-between items-center mb-4">
-                <h2 class="text-5xl text-sky-200 font-fancy font-semibold">Create New List</h2>
+                <h2 class="text-6xl text-sky-200 font-fancy">Create New List</h2>
                 <button @click="closeModal('NewListModal')" class="text-gray-500 text-5xl hover:text-gray-700">
                     &times;
                 </button>
@@ -83,16 +83,16 @@ console.log(selectedList);
     </div>
     
     <div id="viewTheList" class = "fixed inset-0 bg-black/75 flex items-center justify-center hidden">
-      <div class="bg-sky-50 p-8 rounded-lg shadow-xl w-200 h-150 border-2 border-slate-300">
+      <div class="bg-gray-100 p-8 rounded-lg shadow-xl w-200 h-150 border-2 border-slate-300">
              <div class="flex justify-between items-center mb-4">
-                <h2 class="text-5xl text-sky-200 font-fancy font-semibold">{{selectedList?.name}}</h2>
+                <h2 class="text-5xl text-sky-300 font-fancy ">{{selectedList?.name}}</h2>
                   <button @click="closeModal('viewTheList')" class="text-gray-500 text-5xl hover:text-gray-700">
                     &times;
                 </button>
             </div>
             <div class="mt-10 flex flex-col gap-5">
                     <div v-for="task in selectedList?.tasks" :key="task" class="flex items-center gap-2">
-                      <button class="ml-6 mb-2 bg-sky-200 hover:bg-sky-300 text-white text-sm font-bold py-1 px-2 rounded" @click="taskDone(task)">✓</button>
+                      <button class="ml-6 mb-2 bg-sky-200 hover:bg-gray-300 text-white text-sm font-bold py-1 px-2 " @click="taskDone(task)">✓</button>
                       {{ task }}
                     </div>
             </div>
