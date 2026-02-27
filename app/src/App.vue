@@ -53,7 +53,7 @@ console.log(selectedList);
   <hr class="border-gray-400 border-1 border-dotted w-300 my-4">
   </div>
 
-  <div menu class = "mt-5 menu2 flex justify-center gap-7">
+  <div class = "mt-5 menu2 flex justify-center gap-7">
   <h2 class = "your lists text-5xl font-gummy text-sky-200 tracking-wide text-center">Your Lists</h2>
   <button class="bg-emerald-200 hover:bg-emerald-300 text-white text-2xl font-bold py-1 px-4 rounded" @click="openModal()">+</button>
   </div>
@@ -113,3 +113,5 @@ console.log(selectedList);
 </template>
 
 <style scoped></style>
+
+
