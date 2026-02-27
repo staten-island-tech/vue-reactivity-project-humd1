@@ -100,6 +100,7 @@ console.log(selectedList);
                       <button class="ml-6 mb-2 bg-sky-200 hover:bg-gray-300 text-white text-sm font-bold py-1 px-2 " @click="taskDone(task)">✓</button>
                       {{ task }}
                     </div>
+                    <h3 class="text-1xl font-gummy text-sky-300 tracking-wide">{{ selectedList?.tasks.length }} tasks left to do!</h3>
             </div>
       </div>
     </div>
