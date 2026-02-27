@@ -42,6 +42,10 @@ function deleteList(deletedList){
   lists.value = lists.value.filter(list => list.id !== deletedList.id);
 };
 
+function taskDone(task){
+  selectedList.value.tasks = selectedList.value.tasks.filter(t => t !== task);
+}
+
 console.log(selectedList);
 </script>
 
@@ -86,10 +90,11 @@ console.log(selectedList);
                     &times;
                 </button>
             </div>
-            <div class="flex flex-col gap-5">
-                  <ul class="list-disc text-2xl list-inside text-center leading-loose items-left">
-                    <li v-for="task in selectedList?.tasks" :key="task">{{ task }}<button class="ml-6 mb-2 bg-rose-200 hover:bg-rose-300 text-white text-sm font-bold py-1 px-2 rounded">Delete</button></li>
-                  </ul>
+            <div class="mt-10 flex flex-col gap-5">
+                    <div v-for="task in selectedList?.tasks" :key="task" class="flex items-center gap-2">
+                      <button class="ml-6 mb-2 bg-sky-200 hover:bg-sky-300 text-white text-sm font-bold py-1 px-2 rounded" @click="taskDone(task)">✓</button>
+                      {{ task }}
+                    </div>
             </div>
       </div>
     </div>
